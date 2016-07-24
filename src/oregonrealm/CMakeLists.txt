@@ -19,7 +19,7 @@ set(oregon-realm_SRCS
 if( WIN32 )
   set(oregon-realm_SRCS
     ${oregon-realm_SRCS}
-    OregonRealm.rc
+    #    OregonRealm.rc
   )
 endif()
 
@@ -33,7 +33,7 @@ include_directories(
   ${OPENSSL_INCLUDE_DIR}
 )
 
-set(oregon-realm_LINK_FLAGS "-rdynamic")
+#set(oregon-realm_LINK_FLAGS "-rdynamic")
 
 add_executable(oregon-realm
   ${oregon-realm_SRCS}
@@ -54,6 +54,7 @@ if( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
 endif()
 
 set_target_properties(oregon-realm PROPERTIES LINK_FLAGS "${oregon-realm_LINK_FLAGS}")
+#SET(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> -I${CMAKE_CURRENT_SOURCE_DIR} -I${CMAKE_BINARY_DIR} -i <SOURCE> -o <OBJECT>")
 
 target_link_libraries(oregon-realm
   shared
@@ -77,7 +78,7 @@ endif()
 if( WIN32 )
   add_custom_command(TARGET oregon-realm
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/oregonrealm.conf.dist ${CMAKE_BINARY_DIR}/bin/$(ConfigurationName)/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/oregonrealm.conf.dist ${CMAKE_BINARY_DIR}/bin/$(ConfigurationName)/
   )
 endif()
 

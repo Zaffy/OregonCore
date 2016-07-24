@@ -153,7 +153,7 @@ void Console::Initialize()
 
     SetStdHandle(STD_ERROR_HANDLE, writer);
     //stderr->_file = _open_osfhandle((long) writer, _O_TEXT);
-    dup2(_open_osfhandle((long) writer, 0), fileno(stderr));
+    dup2(_open_osfhandle((intptr_t) writer, 0), fileno(stderr));
     m_loggerFd = reader;
     #else
     int fds[2];

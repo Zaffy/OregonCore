@@ -24,7 +24,7 @@ add_definitions(-std=gnu99 -pipe -fvisibility=hidden -O3 -funroll-loops --no-war
 
 add_custom_command(
     OUTPUT jemallocs_internals
-    COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}/configure CC=${CMAKE_C_COMPILER} CXX=${CMAKE_CXX_COMPILER} --quiet
+    COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}/configure CC=${CMAKE_C_COMPILER} CXX=${CMAKE_CXX_COMPILER} --host=x86_64-w64-mingw32 --quiet
     COMMAND cmake -E touch jemallocs_internals
 )
 add_custom_target(jemalloc_internals DEPENDS jemallocs_internals)

@@ -23,7 +23,7 @@
 #include <errno.h>
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #include <sys/stat.h>
 #include <direct.h>
 #define mkdir _mkdir

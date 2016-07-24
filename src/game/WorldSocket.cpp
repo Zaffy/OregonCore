@@ -137,8 +137,8 @@ int WorldSocket::SendPacket (const WorldPacket& pct)
     // Dump outgoing packet.
     if (sLog.IsLogTypeEnabled(LOG_TYPE_NETWORK))
     {
-        sLog.outNetwork ("SERVER:\nSOCKET: %u\nLENGTH: %u\nOPCODE: %s (0x%.4X)\nDATA:\n",
-                                   (uint32) get_handle(),
+        sLog.outNetwork ("SERVER:\nSOCKET: %lu\nLENGTH: %u\nOPCODE: %s (0x%.4X)\nDATA:\n",
+                                   (intptr_t) get_handle(),
                                    pct.size(),
                                    LookupOpcodeName (pct.GetOpcode()),
                                    pct.GetOpcode());
@@ -566,8 +566,8 @@ int WorldSocket::ProcessIncoming (WorldPacket* new_pct)
     // Dump received packet.
     if (sLog.IsLogTypeEnabled(LOG_TYPE_NETWORK))
     {
-        sLog.outNetwork ("CLIENT:\nSOCKET: %u\nLENGTH: %u\nOPCODE: %s (0x%.4X)\nDATA:\n",
-                                   (uint32) get_handle(),
+        sLog.outNetwork ("CLIENT:\nSOCKET: %lu\nLENGTH: %u\nOPCODE: %s (0x%.4X)\nDATA:\n",
+                                   (intptr_t) get_handle(),
                                    new_pct->size(),
                                    LookupOpcodeName (new_pct->GetOpcode()),
                                    new_pct->GetOpcode());

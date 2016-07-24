@@ -43,7 +43,7 @@
 
 #include <cstdlib>
 
-#ifdef G3D_WIN32
+#if defined(G3D_WIN32) || defined(__MINGW32__)
 
 #   include <conio.h>
 #   include <sys/timeb.h>
@@ -712,7 +712,7 @@ std::string& System::appName() {
 std::string System::currentProgramFilename() {
     char filename[2048];
 
-#   ifdef G3D_WIN32
+#   if defined(G3D_WIN32) || defined(__MINGW32__)
     {
         GetModuleFileNameA(NULL, filename, sizeof(filename));
     } 
@@ -809,7 +809,7 @@ void System::consoleClearScreen() {
 
 
 bool System::consoleKeyPressed() {
-    #ifdef G3D_WIN32
+    #if defined(G3D_WIN32) || defined(__MINGW32__)
     
         return _kbhit() != 0;
 
@@ -862,7 +862,7 @@ int System::consoleReadKey() {
 
 
 void System::initTime() {
-    #ifdef G3D_WIN32
+    #if defined(G3D_WIN32) || defined(__MINGW32__)
         if (QueryPerformanceFrequency(&m_counterFrequency)) {
             QueryPerformanceCounter(&m_start);
         }
@@ -897,7 +897,7 @@ void System::initTime() {
 
 
 RealTime System::time() { 
-#   ifdef G3D_WIN32
+#   if defined(G3D_WIN32) || defined(__MINGW32__)
         LARGE_INTEGER now;
         QueryPerformanceCounter(&now);
 

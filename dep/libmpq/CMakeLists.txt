@@ -14,7 +14,7 @@ set(mpq_STAT_SRCS
   ${sources_mpq}
 )
 
-if( UNIX )
+if( UNIX OR MINGW)
   include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/dep/zlib

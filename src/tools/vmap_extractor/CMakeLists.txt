@@ -19,7 +19,7 @@ add_definitions("-Wall")
 add_definitions("-ggdb")
 add_definitions("-O3")
 
-if( UNIX )
+if( UNIX OR MINGW)
   include_directories(
     ${CMAKE_SOURCE_DIR}/dep/libmpq
   )

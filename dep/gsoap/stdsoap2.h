@@ -1020,7 +1020,11 @@ extern "C" {
 # endif
 #endif
 
-#ifdef WIN32 
+#ifdef WIN32
+# ifdef __MINGW32__
+#  define _isnan isnan
+#  define _finite isfinite
+# endif
 # include <float.h>
 # ifndef HAVE_ISNAN
 #  define HAVE_ISNAN

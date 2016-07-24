@@ -45,13 +45,13 @@ add_executable(movements_extractor
 
 target_link_libraries(movements_extractor
   ${JEMALLOC_LIBRARY}
-  ${ACE_LIBRARY}
   ${BZIP2_LIBRARIES}
   ${ZLIB_LIBRARIES}
   Recast
   Detour
   collision
   g3dlib
+  ${ACE_LIBRARY}
 )
 
 if( UNIX )

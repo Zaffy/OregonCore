@@ -120,7 +120,7 @@
 #  include <netdb.h>
 #endif
 
-#if COMPILER == COMPILER_MICROSOFT
+#if PLATFORM == PLATFORM_WINDOWS
 
 #include <float.h>
 
@@ -129,7 +129,7 @@
 #define snprintf _snprintf
 #define atoll __atoi64
 #define vsnprintf _vsnprintf
-#define finite(X) _finite(X)
+#define finite(X) isfinite(X)
 #define strtoull _strtoui64
 #define strtoll _strtoi64
 #define fileno _fileno

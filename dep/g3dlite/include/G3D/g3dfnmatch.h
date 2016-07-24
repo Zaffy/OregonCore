@@ -42,7 +42,7 @@
 
 namespace G3D {
 
-#if defined(G3D_WIN32) 
+#if defined(G3D_WIN32) || defined (__MINGW32__) 
 
 #   if ! defined(FNM_NOMATCH)
 #       define FNM_NOMATCH        1      /* Match failed. */
@@ -53,6 +53,10 @@ namespace G3D {
 #       define FNM_CASEFOLD    0x10      /* Case insensitive search. */
 #       define FNM_PREFIX_DIRS 0x20      /* Directory prefixes of pattern match too. */
 #    endif
+
+#   if defined (__MINGW32__)
+#       define fnmatch g3dfnmatch
+#   endif
 
 #else 
 

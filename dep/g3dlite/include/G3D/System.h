@@ -20,6 +20,12 @@
 #include "G3D/BinaryFormat.h"
 #include <string>
 
+
+#ifdef __MINGW32__
+#    define _WIN32_WINNT 0x0500
+#    include <windows.h>
+#endif
+
 #ifdef G3D_OSX
 #   include <CoreServices/CoreServices.h>
 #endif
@@ -115,7 +121,7 @@ private:
     std::string    m_cpuArch;
     std::string    m_operatingSystem;
 
-#   ifdef G3D_WIN32
+#   if defined(G3D_WIN32) || defined(__MINGW32__)
     /** Used by getTick() for timing */
     LARGE_INTEGER  m_start;
     LARGE_INTEGER  m_counterFrequency;

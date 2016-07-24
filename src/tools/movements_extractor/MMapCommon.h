@@ -23,12 +23,12 @@
 #  pragma warning( disable : 4996 )
 #endif
 
+#include "Platform/Define.h"
+
 #include <string>
 #include <vector>
 #include <errno.h>
 #include <algorithm>
-
-#include "Platform/Define.h"
 
 #ifndef WIN32
 #include <stddef.h>

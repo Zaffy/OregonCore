@@ -10,7 +10,7 @@
 
 file(GLOB_RECURSE sources *.cpp *.h)
 
-if( UNIX )
+if( UNIX OR MINGW )
   include_directories (
     ${CMAKE_SOURCE_DIR}/src/shared
     ${CMAKE_SOURCE_DIR}/dep/libmpq

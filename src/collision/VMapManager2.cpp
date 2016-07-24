@@ -15,6 +15,10 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <ace/Null_Mutex.h>
+#include <ace/Singleton.h>
+#include "Platform/Define.h"
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -25,8 +29,6 @@
 #include "WorldModel.h"
 #include "VMapDefinitions.h"
 #include <G3D/Vector3.h>
-#include <ace/Null_Mutex.h>
-#include <ace/Singleton.h>
 //#include "DisableMgr.h"
 #include "DBCStores.h"
 

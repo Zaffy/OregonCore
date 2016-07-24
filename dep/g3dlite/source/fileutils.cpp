@@ -31,7 +31,9 @@
    #include <io.h>
 #else
     #include <dirent.h>
-    #include <fnmatch.h>
+    #ifndef __MINGW32__
+        #include <fnmatch.h>
+    #endif
     #include <unistd.h>
     #define _getcwd getcwd
     #define _stat stat
@@ -292,8 +294,10 @@ void createDirectory(
         if (! FileSystem::exists(p)) {
             // Windows only requires one argument to mkdir,
             // where as unix also requires the permissions.
-#           ifndef G3D_WIN32
+#           if !defined(G3D_WIN32) && !defined(__MINGW32__)
                 mkdir(p.c_str(), 0777);
+#	        elif defined(__MINGW32__)
+                mkdir(p.c_str());
 #	        else
                 _mkdir(p.c_str());
 #	        endif

@@ -346,8 +346,9 @@ include_directories(
 set_source_files_properties(Atomic_Op_Sparc.c Rtems_init.c PROPERTIES LANGUAGE CXX)
 
 add_library(ace SHARED ${ace_STAT_SRCS})
-target_link_libraries(ace Iphlpapi.lib)
+target_link_libraries(ace iphlpapi kernel32 ws2_32 mswsock netapi32)
 
-add_native_precompiled_header(ace ${CMAKE_CURRENT_SOURCE_DIR}/PrecompiledHeaders/WinAcePCH)
+#add_native_precompiled_header(ace ${CMAKE_CURRENT_SOURCE_DIR}/PrecompiledHeaders/WinAcePCH)
 
+add_precompiled_header(ace ${CMAKE_CURRENT_SOURCE_DIR}/PrecompiledHeaders/WinAcePCH.h)
 install(TARGETS ace RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}")

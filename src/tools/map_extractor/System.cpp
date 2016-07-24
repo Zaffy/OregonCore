@@ -111,6 +111,8 @@ void CreateDir( const std::string& Path )
 {
     #ifdef WIN32
     _mkdir( Path.c_str());
+    #elif __MINGW32__
+    mkdir( Path.c_str());
     #else
     mkdir( Path.c_str(), 0777 );
     #endif

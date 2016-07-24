@@ -19,7 +19,7 @@ set(oregon-core_SRCS
 if( WIN32 )
   set(oregon-core_SRCS
     ${oregon-core_SRCS}
-    OregonCore.rc
+    #   OregonCore.rc
   )
 endif()
 
@@ -53,6 +53,10 @@ add_dependencies(oregon-core revision.h)
 
 if( UNIX )
   set(oregon-core_LINK_FLAGS "-pthread -rdynamic ${oregon-core_LINK_FLAGS}")
+endif()
+
+if (MINGW)
+  set(oregon-core_LINK_FLAGS "${oregon-core_LINK_FLAGS} -pthread -static-libstdc++ -static-libgcc")
 endif()
 
 set_target_properties(oregon-core PROPERTIES LINK_FLAGS "${oregon-core_LINK_FLAGS}")
